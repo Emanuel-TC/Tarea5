@@ -64,14 +64,14 @@ public class ClienteRMI {
         partialCMatrixes = new Hashtable<>();
 
         //Creating threads in order to get the Cis at the same time and not sequentially.
-        WorkerPartialCi workers[] = new WorkerPartialCi[9];
+        WorkerPartialCi workers[] = new WorkerPartialCi[16];
 
        
         int Ci=1;
-        for(int cuartoOfA=0; cuartoOfA<3 ; cuartoOfA++){
+        for(int cuartoOfA=0; cuartoOfA<4 ; cuartoOfA++){
             MatrixInterface remote = (MatrixInterface) Naming.lookup("rmi://"+nodesIP[cuartoOfA]+"/matrix");
             //Each node will get AixB1 to AixB3
-            for(int cuartoOfB=0; cuartoOfB<3 ; cuartoOfB++){
+            for(int cuartoOfB=0; cuartoOfB<4 ; cuartoOfB++){
                 //Remote method implemented inside the thread.
                 workers[Ci-1]= new WorkerPartialCi(remote, Ci, cuartoOfA, cuartoOfB);
                 workers[Ci-1].start();
