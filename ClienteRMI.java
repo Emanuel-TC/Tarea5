@@ -7,15 +7,16 @@ public class ClienteRMI {
     private static MatrixABC A,B,C;
     private static float checksum;
     private static String[] nodesIP = new String[4];
-    private static Hashtable<Float,Matrix> partialCMatrixes;
+    private static Hashtable<Integer,Matrix> partialCMatrixes;
     private static Object lock = new Object();
 
     //Inner Class that represent a Thread that runs a remote method
     private static class WorkerPartialCi extends Thread{
         private MatrixInterface remote;
-        private float Ci,cuartoOfA,cuartoOfB;
+        private float cuartoOfA,cuartoOfB;
+        private int Ci;
 
-        public WorkerPartialCi(MatrixInterface remote, float Ci, float cuartoOfA, float cuartoOfB){
+        public WorkerPartialCi(MatrixInterface remote, int Ci, float cuartoOfA, float cuartoOfB){
             this.remote=remote;
             this.Ci=Ci;
             this.cuartoOfA=cuartoOfA;

@@ -69,7 +69,7 @@ public class MatrixABC extends Matrix{
     }
 
     //Function equivalent to "acomoda_matriz"
-    public static MatrixABC AcomodaMatriz(Hashtable<Float,Matrix> partialCs){
+    public static MatrixABC AcomodaMatriz(Hashtable<Integer,Matrix> partialCs){
         int N=partialCs.get(1).columns*4;
         float matrixArrayC[][] = new float[N][N];
 
