@@ -75,7 +75,7 @@ public class MatrixABC extends Matrix{
 
         int actualRow=0;
         int actualColumn=0;
-        for(int Ci=1; Ci<=16 ; Ci++){
+        for(int Ci=1; Ci<=4000 ; Ci++){
             float[][] arrayCi=partialCs.get(Ci).matrixArray;
 
             for(int i = 0; i < N/4 ; i++)
