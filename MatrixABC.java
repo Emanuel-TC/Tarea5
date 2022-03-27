@@ -35,8 +35,8 @@ public class MatrixABC extends Matrix{
             throw new Exception("Wrong TipoCuarto value. Expected: (0-3)",new Throwable("TipoCuarto: "+TipoCuarto));
         float CuartoMatrizArray[][] = new float[rows/4][columns];
         int i=0;
-        float cuarto=rows/4;
-        float type=0.0f;
+        int cuarto=rows/4;
+        int type=0;
 
         while(type!=TipoCuarto){
             i+=rows/4;
@@ -69,14 +69,14 @@ public class MatrixABC extends Matrix{
     }
 
     //Function equivalent to "acomoda_matriz"
-    public static MatrixABC AcomodaMatriz(Hashtable<Float,Matrix> partialCMatrixes){
-        int N=partialCMatrixes.get(1).columns*4;
+    public static MatrixABC AcomodaMatriz(Hashtable<Float,Matrix> partialCs){
+        int N=partialCs.get(1).columns*4;
         float matrixArrayC[][] = new float[N][N];
 
         int actualRow=0;
         int actualColumn=0;
         for(int Ci=1; Ci<=16 ; Ci++){
-            float[][] arrayCi=partialCMatrixes.get(Ci).matrixArray;
+            float[][] arrayCi=partialCs.get(Ci).matrixArray;
 
             for(int i = 0; i < N/4 ; i++)
                 for(int j = 0; j < N/4 ; j++)

@@ -5,7 +5,7 @@ public class ClienteRMI {
 
     private static int N;
     private static MatrixABC A,B,C;
-    private static double checksum;
+    private static float checksum;
     private static String[] nodesIP = new String[4];
     private static Hashtable<Float,Matrix> partialCMatrixes;
     private static Object lock = new Object();
@@ -70,7 +70,7 @@ public class ClienteRMI {
         int Ci=1;
         for(int cuartoOfA=0; cuartoOfA<4 ; cuartoOfA++){
             MatrixInterface remote = (MatrixInterface) Naming.lookup("rmi://"+nodesIP[cuartoOfA]+"/matrix");
-            //Each node will get AixB1 to AixB3
+            //Each node will get AixB1 to AixB4
             for(int cuartoOfB=0; cuartoOfB<4 ; cuartoOfB++){
                 //Remote method implemented inside the thread.
                 workers[Ci-1]= new WorkerPartialCi(remote, Ci, cuartoOfA, cuartoOfB);
